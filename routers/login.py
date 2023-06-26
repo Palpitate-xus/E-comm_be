@@ -7,8 +7,8 @@ router = APIRouter()
 @router.post("/login/")
 async def login(user: User):
     # 查询数据库中是否存在匹配的用户名和密码
-    query = "SELECT * FROM users WHERE username=%s AND password=%s"
-    result = execute_query(query, (user.username, user.password))
+    query = "SELECT * FROM users WHERE username=%s AND password=%s AND type=%s"
+    result = execute_query(query, (user.username, user.password, user.type))
 
     if result is None:
         # 用户名或密码不匹配，返回错误响应

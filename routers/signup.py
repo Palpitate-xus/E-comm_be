@@ -12,8 +12,8 @@ def register_user(user: User):
     try:
         with connection.cursor() as cursor:
             # 执行插入操作
-            sql = "INSERT INTO users (username, password) VALUES (%s, %s)"
-            cursor.execute(sql, (user.username, user.password))
+            sql = "INSERT INTO users (username, password, type) VALUES (%s, %s, %s)"
+            cursor.execute(sql, (user.username, user.password, user.type))
         connection.commit()
     finally:
         database.close_connection(connection)

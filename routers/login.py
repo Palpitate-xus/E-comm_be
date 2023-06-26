@@ -4,7 +4,7 @@ from utils.auth import generate_token
 from models.user import User
 router = APIRouter()
 
-@router.post("/login")
+@router.post("/login/")
 async def login(user: User):
     # 查询数据库中是否存在匹配的用户名和密码
     query = "SELECT * FROM users WHERE username=%s AND password=%s"

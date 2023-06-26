@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="更新init.py文件">
-      <change afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routers/signup.py" afterDir="false" />
+    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="更新models文件夹和注册功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/signup.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +74,8 @@
       <workItem from="1687753022956" duration="5443000" />
       <workItem from="1687764184634" duration="3682000" />
       <workItem from="1687768582371" duration="1207000" />
-      <workItem from="1687770095390" duration="7074000" />
+      <workItem from="1687770095390" duration="7318000" />
+      <workItem from="1687778810090" duration="679000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1687753079185</created>
@@ -128,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687769545024</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="更新models文件夹和注册功能">
+      <created>1687778103887</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1687778103887</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,9 +155,10 @@
     <MESSAGE value="登陆并返回token" />
     <MESSAGE value="登陆并返回token 分模块" />
     <MESSAGE value="更新init.py文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新init.py文件" />
+    <MESSAGE value="更新models文件夹和注册功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新models文件夹和注册功能" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/E_comm_be$E_comm_be.coverage" NAME="E-comm_be 覆盖结果" MODIFIED="1687777946806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/E_comm_be$E_comm_be.coverage" NAME="E-comm_be 覆盖结果" MODIFIED="1687778870665" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

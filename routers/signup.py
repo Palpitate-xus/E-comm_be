@@ -5,7 +5,7 @@ from db import database
 router = APIRouter()
 
 
-@router.post("/register")
+@router.post("/singup/")
 def register_user(user: User):
     # 在数据库中插入用户信息
     connection = database.get_connection()

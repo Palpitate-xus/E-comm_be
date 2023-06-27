@@ -5,18 +5,10 @@ from db import database
 router = APIRouter()
 
 
-@router.post("/signup/")
+@router.post("/api/users/register/")
 def register_user(user: User):
     # 在数据库中插入用户信息
-    connection = database.get_connection()
-    try:
-        with connection.cursor() as cursor:
-            # 执行插入操作
-            sql = "INSERT INTO users (username, password, type) VALUES (%s, %s, %s)"
-            cursor.execute(sql, (user.username, user.password, user.type))
-        connection.commit()
-    finally:
-        database.close_connection(connection)
+    database.create_user(user)
 
     return {"message": "User registered successfully"}
 

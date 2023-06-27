@@ -1,9 +1,11 @@
 from fastapi import FastAPI
-from routers import login_router,signup_router
+from routers import login_router,signup_router,reset_password_router,update_profile_router
 
 app = FastAPI()
 app.include_router(login_router)
 app.include_router(signup_router)
+app.include_router(reset_password_router)
+app.include_router(update_profile_router)
 
 
 if __name__ == "__main__":

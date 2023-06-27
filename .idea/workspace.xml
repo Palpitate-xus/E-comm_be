@@ -4,13 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="增加登陆注册类型和自增id">
-      <change afterPath="$PROJECT_DIR$/E-commerce_platform.sql" afterDir="false" />
+    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="修改登录注册接口及返回值，并添加数据库文件">
+      <change afterPath="$PROJECT_DIR$/db/db_user.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/reset_password.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routers/update_profile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/login.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routers/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/routers/signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +84,10 @@
       <workItem from="1687768582371" duration="1207000" />
       <workItem from="1687770095390" duration="7318000" />
       <workItem from="1687778810090" duration="13216000" />
-      <workItem from="1687829776869" duration="12640000" />
+      <workItem from="1687829776869" duration="15335000" />
+      <workItem from="1687852986640" duration="203000" />
+      <workItem from="1687853193752" duration="197000" />
+      <workItem from="1687853631992" duration="3965000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1687753079185</created>
@@ -158,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687849120467</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="修改登录注册接口及返回值，并添加数据库文件">
+      <created>1687850310361</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1687850310361</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,9 +198,10 @@
     <MESSAGE value="更新models文件夹和注册功能" />
     <MESSAGE value="解决307 Temporary Redirect问题" />
     <MESSAGE value="增加登陆注册类型和自增id" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加登陆注册类型和自增id" />
+    <MESSAGE value="修改登录注册接口及返回值，并添加数据库文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改登录注册接口及返回值，并添加数据库文件" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/E_comm_be$E_comm_be.coverage" NAME="E-comm_be 覆盖结果" MODIFIED="1687850186814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/E_comm_be$E_comm_be.coverage" NAME="E-comm_be 覆盖结果" MODIFIED="1687857268876" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

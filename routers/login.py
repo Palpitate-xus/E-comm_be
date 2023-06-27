@@ -4,7 +4,7 @@ from utils.auth import generate_token
 from models.user import User
 router = APIRouter()
 
-@router.post("/login/")
+@router.post("/api/users/login/")
 async def login(user: User):
 
     result = login(user)
@@ -17,4 +17,4 @@ async def login(user: User):
         token = generate_token(user.username)
 
         # 返回包含令牌的成功响应
-        return {"token": token}
+        return {"code": 200, "message": "Login successful", "data": {"token": token}}

@@ -24,8 +24,8 @@ def execute_query(query, params=None):
 #登陆
 def login(user: User):
     # 查询数据库中是否存在匹配的用户名和密码
-    query = "SELECT * FROM User WHERE username=%s AND password=%s AND usertype=%s"
-    result = execute_query(query, (user.username, user.password, user.usertype))
+    query = "SELECT * FROM User WHERE username=%s AND password=%s AND user_type=%s"
+    result = execute_query(query, (user.username, user.password, user.user_type))
     return result
 
 #创建新用户

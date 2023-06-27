@@ -15,7 +15,7 @@ def execute_query(query, params=None):
     try:
         with connection.cursor() as cursor:
             cursor.execute(query, params)
-            result = cursor.fetchone()
+            result = cursor.fetchall()
     finally:
         close_connection(connection)
     return result

@@ -5,4 +5,5 @@ DB_CONFIG = {
     'user': 'root',
     'password': 'Zyf1231234321',
     'database': 'E-commerce_platform',
+    'autocommit': True
 }

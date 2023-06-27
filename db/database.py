@@ -5,7 +5,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'port': 3306,
     'user': 'root',
-    'password': 'Zyf1231234321',
+    'password': '123456789',
     'database': 'E-commerce_platform',
 }
 #建立连接

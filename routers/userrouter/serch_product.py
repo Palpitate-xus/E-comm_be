@@ -23,5 +23,5 @@ def searchproduct(product: Product):
         )
         data.append(product1)
     data = {"products": data}
-    return {"code": 200, "message": "Password reset successful", "data": data}
+    return {"code": 200, "message": "Product searched successful", "data": data}
 

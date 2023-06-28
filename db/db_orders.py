@@ -25,6 +25,9 @@ def create_order(createorder: CreateOrder):
         sql2 = "INSERT INTO Order_detail (order_id, product_id, quantity, unit_price) VALUES (%s, %s, %s, %s)"
         execute_query(sql2, (order_id, order_detail.product_id, order_detail.quantity, order_detail.unit_price))
 
+    sql_clear_cart = "DELETE FROM Shopping_cart WHERE user_id = %s"
+    execute_query(sql_clear_cart, (createorder.user_id))
+
 
 
 def remove_order(order: Orders):

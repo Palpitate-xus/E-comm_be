@@ -1,7 +1,26 @@
 from fastapi import FastAPI
 from routers import *
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+# 设置 CORS 配置
+origins = [
+    "http://localhost",
+    "http://localhost:5137",
+    "*",
+    # 添加其他允许访问的域名/地址
+]
+
+# 启用 CORS 中间件
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.include_router(login_router)
 app.include_router(signup_router)
 app.include_router(reset_password_router)

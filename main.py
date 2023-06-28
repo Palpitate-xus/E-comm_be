@@ -7,6 +7,7 @@ app.include_router(signup_router)
 app.include_router(reset_password_router)
 app.include_router(update_profile_router)
 app.include_router(productlist_router)
+app.include_router(accept_order_router)
 
 
 if __name__ == "__main__":

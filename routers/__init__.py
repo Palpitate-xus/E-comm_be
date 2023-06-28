@@ -4,3 +4,5 @@ from .userrouter.reset_password import router as reset_password_router
 from .userrouter.update_profile import router as update_profile_router
 
 from .storerouter.productlist import router as productlist_router
+
+from .suppliersrouter.accept_order import router as accept_order_router

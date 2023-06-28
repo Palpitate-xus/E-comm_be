@@ -1,4 +1,5 @@
 from models.user import User
+from models.order_details import OrderDetail
 from db.database import execute_query,get_connection,close_connection
 
 #登陆,返回user_id
@@ -19,6 +20,9 @@ def reset_password(user: User):
 def edit_user_info(user: User):
     sql = "UPDATE User SET email = %s, username = %s, password = %s WHERE user_id = %s"
     execute_query(sql, (user.email, user.username, user.password, user.user_id))
+
+
+
 
 # 根据id删除用户
 def delete_user(user_id):

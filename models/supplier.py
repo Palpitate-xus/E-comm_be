@@ -7,6 +7,6 @@ class Supplier(BaseModel):
     contact_info: Optional[str]
     supplier_address: Optional[str]
     user_id: Optional[int]
-    '''
+
     class Config:
-        extra = Extra.forbid'''
+        extra = Extra.forbid

@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.post("/api/orders/remove_order")
-def create_order(orders: Orders):
+def remove_order(orders: Orders):
     # 在数据库中插入商品信息
     db_orders.remove_order(orders)
 

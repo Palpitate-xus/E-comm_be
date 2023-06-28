@@ -5,7 +5,7 @@ router = APIRouter()
 
 
 @router.post("/api/store/productlist/")
-def reset_password():
+def productlist():
     # 在数据库中插入用户信息
     result = db_store.productlist()
     print(result)

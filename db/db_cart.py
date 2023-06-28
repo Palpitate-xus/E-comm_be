@@ -9,3 +9,8 @@ def add_to_cart(shoppingCart: ShoppingCart):
 def remove_from_cart(shoppingCart: ShoppingCart):
     sql = "DELETE FROM Shopping_cart WHERE user_id = %s AND product_id = %s"
     execute_query(sql, (shoppingCart.user_id, shoppingCart.product_id))
+
+def get_user_cart(shoppingCart: ShoppingCart):
+    sql = "SELECT * FROM Shopping_cart WHERE user_id = %s"
+    result = execute_query(sql, (shoppingCart.user_id))
+    return result

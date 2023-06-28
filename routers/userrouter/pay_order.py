@@ -6,8 +6,8 @@ router = APIRouter()
 
 
 @router.post("/api/payments/pay_order")
-def create_order(orders: Orders):
+def pay_order(orders: Orders):
     # 在数据库中插入商品信息
-    db_orders.create_order(orders)
+    db_orders.pay_order(orders)
 
-    return {"code": 200, "message": "Order create successfully", "data": {}}
+    return {"code": 200, "message": "Order paied successfully", "data": {}}

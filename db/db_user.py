@@ -1,5 +1,5 @@
 from models.user import User
-from .database import execute_query,get_connection,close_connection
+from db.database import execute_query,get_connection,close_connection
 
 #登陆,返回user_id
 def login(user: User):

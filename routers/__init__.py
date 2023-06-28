@@ -16,5 +16,8 @@ from .userrouter.get_user_cart import router as get_user_cart_router
 
 
 from .storerouter.productlist import router as productlist_router
+from .storerouter.orderlist import router as orderlist_router
+from .storerouter.accept_order import router as accept_order_platform_router
+from .storerouter.reject_order import router as reject_order_platform_router
 
 from .suppliersrouter.accept_order import router as accept_order_router

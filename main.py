@@ -28,6 +28,11 @@ app.include_router(update_profile_router)
 
 
 app.include_router(productlist_router)
+app.include_router(orderlist_router)
+app.include_router(accept_order_platform_router)
+app.include_router(reject_order_platform_router)
+
+
 app.include_router(accept_order_router)
 app.include_router(serch_product_router)
 app.include_router(add_to_cart_router)

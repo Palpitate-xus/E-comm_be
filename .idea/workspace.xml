@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="剥离database中用户表的操作，按照接口规范实现了用户接口文档中第一个表的所有功能">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/db_supplier.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/db_supplier.py" afterDir="false" />
-    </list>
+    <list default="true" id="7b18d115-4527-4799-b3bd-cd6b33a26649" name="更改" comment="剥离database中用户表的操作，按照接口规范实现了用户接口文档中第一个表的所有功能" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +81,7 @@
       <workItem from="1687853193752" duration="197000" />
       <workItem from="1687853631992" duration="3965000" />
       <workItem from="1687878985079" duration="2099000" />
-      <workItem from="1687915419575" duration="1663000" />
+      <workItem from="1687915419575" duration="1822000" />
     </task>
     <task id="LOCAL-00001" summary="first commit">
       <created>1687753079185</created>
@@ -177,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687916801452</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="剥离database中用户表的操作，按照接口规范实现了用户接口文档中第一个表的所有功能">
+      <created>1687917209106</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1687917209106</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -20,29 +20,32 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
+#用户信息管理路由
 app.include_router(login_router)
 app.include_router(signup_router)
 app.include_router(reset_password_router)
 app.include_router(update_profile_router)
-
-
+#用户搜索商品路由
+app.include_router(serch_product_router)
+#用户购物车管理路由
+app.include_router(add_to_cart_router)
+app.include_router(remove_from_cart_router)
+app.include_router(get_user_cart_router)
+#用户订单管理
+app.include_router(create_order_router)
+app.include_router(remove_order_router)
+app.include_router(pay_order_router)
+app.include_router(get_order_details_router)
+app.include_router(get_order_list_router)
+#商城订单和商品管理
 app.include_router(productlist_router)
 app.include_router(orderlist_router)
 app.include_router(accept_order_platform_router)
 app.include_router(reject_order_platform_router)
-
-
+#供应商接受订单
 app.include_router(accept_order_router)
-app.include_router(serch_product_router)
-app.include_router(add_to_cart_router)
-app.include_router(remove_from_cart_router)
-app.include_router(create_order_router)
-app.include_router(remove_ordert_router)
-app.include_router(pay_order_router)
-app.include_router(get_order_details)
-app.include_router(get_order_list_router)
-app.include_router(get_user_cart_router)
+
+
 
 
 if __name__ == "__main__":

@@ -43,7 +43,9 @@ app.include_router(orderlist_router)
 app.include_router(accept_order_platform_router)
 app.include_router(reject_order_platform_router)
 #供应商接受订单
-app.include_router(accept_order_router)
+app.include_router(accept_order_supplier_router)
+#供应商库存管理
+app.include_router(inventory_management_router)
 
 
 

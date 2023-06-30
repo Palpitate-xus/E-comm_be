@@ -1,5 +1,5 @@
 from models.suppliermodel.supply_order import Supply_order
-from .database import execute_query
+from .database import execute_query,get_connection,close_connection
 def accept_order(supply_order: Supply_order):
     connection = get_connection()
     try:

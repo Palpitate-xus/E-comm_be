@@ -53,6 +53,7 @@ app.include_router(reject_order_platform_router)
 app.include_router(accept_order_supplier_router)
 #供应商库存管理
 app.include_router(inventory_management_router)
+app.include_router(upload_products_from_excel)
 
 
 if __name__ == "__main__":

@@ -26,6 +26,7 @@ from .storerouter.reject_order import router as reject_order_platform_router
 
 from .suppliersrouter.accept_order import router as accept_order_supplier_router
 from .suppliersrouter.inventory_management import router as inventory_management_router
+from .suppliersrouter.commodity_update import router as upload_products_from_excel
 
 from routers.userrouter.rsa import router as rsa_router
 from routers.userrouter.userinfo import router as userinfo_router

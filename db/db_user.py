@@ -1,6 +1,6 @@
-from models.user import User
-from models.order_details import OrderDetail
+from models.usermodel.user import User
 from db.database import execute_query,get_connection,close_connection
+from utils.auth import decode_token
 
 #登陆,返回user_id
 def login(user: User):
@@ -17,9 +17,11 @@ def reset_password(user: User):
     sql = "UPDATE User SET password = %s WHERE email = %s"
     execute_query(sql, (user.password, user.email))
 #修改个人信息
-def edit_user_info(user: User):
+def edit_user_info(user: User, token):
     sql = "UPDATE User SET email = %s, username = %s, password = %s WHERE user_id = %s"
-    execute_query(sql, (user.email, user.username, user.password, user.user_id))
+    print(token)
+    print(decode_token(token,"your_secret_key"))
+    execute_query(sql, (user.email, user.username, user.password, decode_token(token,"your_secret_key")['userid']))
 
 
 

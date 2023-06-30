@@ -1,12 +1,13 @@
 from fastapi import APIRouter
 from db import db_cart
-from models.shopping_cart import ShoppingCart
+from models.usermodel.shopping_cart import ShoppingCart
 router = APIRouter()
-
+from fastapi import Request
 @router.post("/api/cart/get_user_cart/")
-def get_user_cart(shoppingcart:ShoppingCart):
+def get_user_cart(request: Request):
+    token = request.headers.get("token")
     # 在数据库中插入用户信息
-    result = db_cart.get_user_cart(shoppingcart)
+    result = db_cart.get_user_cart(token)
     print(result)
     data = {}
 

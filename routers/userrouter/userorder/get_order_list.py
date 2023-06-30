@@ -1,14 +1,16 @@
 from fastapi import APIRouter
-from models.user import User
-from models.orders import Orders
+from models.usermodel.user import User
+from models.usermodel.orders import Orders
 from db import db_orders
-
+from fastapi import Request
 router = APIRouter()
 
 
 @router.post("/api/orders/get_order_list")
-def get_order_list(user: User):
-    result = db_orders.get_order_list(user)
+def get_order_list(request: Request):
+    # 获取前端传递的token
+    token = request.headers.get("token")
+    result = db_orders.get_order_list(token)
     print(result)
     data = []
 

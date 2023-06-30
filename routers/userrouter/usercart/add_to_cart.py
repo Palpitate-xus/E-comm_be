@@ -1,13 +1,14 @@
 from fastapi import APIRouter
-from models.shopping_cart import ShoppingCart
+from models.usermodel.shopping_cart import ShoppingCart
 from db import db_cart
-
+from fastapi import Request
 router = APIRouter()
 
 
 @router.post("/api/cart/add_to_cart/")
-def add_to_cart(shoppingCart: ShoppingCart):
-    # 在数据库中插入商品信息
-    db_cart.add_to_cart(shoppingCart)
+def add_to_cart(shoppingCart: ShoppingCart, request: Request):
+    token = request.headers.get("token")
+    # 把商品加入购物车
+    db_cart.add_to_cart(shoppingCart,token)
 
     return {"code": 200, "message": "Add to cart successfully", "data": {}}

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.inventory import Inventory
+from models.suppliermodel.inventory import Inventory
 from db.database import get_connection, close_connection
 from db import db_inventory
 

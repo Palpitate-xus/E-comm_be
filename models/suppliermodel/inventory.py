@@ -6,6 +6,6 @@ class Inventory(BaseModel):
     supplier_id:Optional[int]
     product_id:Optional[str]
     inventory_time:Optional[datetime]=datetime.now()
-    inventory_num:Optional[int]
+    stock_quantity:Optional[int]
     class Config:
         extra = Extra.forbid

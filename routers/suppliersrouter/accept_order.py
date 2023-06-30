@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.supply_order import Supply_order
+from models.suppliermodel.supply_order import Supply_order
 from db import db_supplier
 
 

@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from models.orders import Orders
+from models.usermodel.orders import Orders
 from db import db_orders
 
 router = APIRouter()

@@ -18,8 +18,8 @@ def productlist():
             product_price=item[3],
             category_id=item[4],
             product_image=item[5],
-            stock_quantity=item[6],
-            product_status=item[7]
+            product_status=item[6],
+            stock_quantity=item[7]
         )
         data.append(product1)
     data = {"products": data}

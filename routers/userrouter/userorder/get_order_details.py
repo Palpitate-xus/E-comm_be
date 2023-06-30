@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/api/orders/get_order_details")
 def find_history(orderdetail: OrderDetail):
-    result = db_orders.get_order_detail(orderdetail)
+    result = db_orders.get_order_detail1(orderdetail)
     print(result)
     data = {}
 

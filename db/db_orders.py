@@ -2,6 +2,7 @@
 
 from models.usermodel.user import User
 from models.usermodel.orders import Orders
+from models.usermodel.order_details import OrderDetail
 import uuid
 from models.usermodel.create_order import CreateOrder
 from .database import execute_query
@@ -86,6 +87,16 @@ def get_order_detail(result):
         WHERE od.order_id = %s
     """
     results = execute_query(sql, (result))
+    return results
+
+def get_order_detail1(orderdetail:OrderDetail):
+    sql = """
+        SELECT od.*, p.product_name
+        FROM Order_detail od
+        INNER JOIN Product p ON od.product_id = p.product_id
+        WHERE od.order_id = %s
+    """
+    results = execute_query(sql, (orderdetail.order_id))
     return results
 
 

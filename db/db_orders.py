@@ -32,7 +32,7 @@ def create_order(createorder: CreateOrder, token):
             return 0
 
         # 计算商品总价格
-        total_amount += order_detail.quantity * order_detail.unit_price
+        total_amount += order_detail.quantity * order_detail.product_price
 
         # 更新库存数量
         updated_stock_quantity = stock_quantity - order_detail.quantity
@@ -59,7 +59,7 @@ def create_order(createorder: CreateOrder, token):
 
     for order_detail in createorder.order_details:
         sql_insert_order_detail = "INSERT INTO Order_detail (order_id, product_id, quantity, unit_price) VALUES (%s, %s, %s, %s)"
-        execute_query(sql_insert_order_detail, (order_id, order_detail.product_id, order_detail.quantity, order_detail.unit_price))
+        execute_query(sql_insert_order_detail, (order_id, order_detail.product_id, order_detail.quantity, order_detail.product_price))
 
     sql_clear_cart = "DELETE FROM Shopping_cart WHERE user_id = %s"
     execute_query(sql_clear_cart, (decode_token(token,"your_secret_key")['userid']))

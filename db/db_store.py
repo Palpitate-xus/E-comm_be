@@ -28,9 +28,7 @@ def reject_order(order: Orders):
     sql = "UPDATE Orders SET order_status = 'Rejected' WHERE order_id = %s AND order_status = 'Pending'"
     execute_query(sql, (order.order_id))
 
-# def send_order(supply_order:Supply_order):
-#     #将订单数据加入至数据库中
-#     sql="INSERT INTO Supply_order(supplyorder_id, supplier_id,product_id,quantity,storage_time) VALUES (%s,%s,%s,%s,%s)"
-#     storage_time=datetime.now()
-#     supplyorder_id=str(uuid.uuid4())
-#     result=execute_query(sql,(supplyorder_id,supply_order.supplier_id, supply_order.product_id, supply_order.stock_quantity, storage_time))
+def delete_product(product: Product):
+    # Delete the product with the given ID from the Product table
+    query = "DELETE FROM Product WHERE product_id = %s"
+    execute_query(query, (product.product_id,))

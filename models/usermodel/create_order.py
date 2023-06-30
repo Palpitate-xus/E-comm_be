@@ -5,7 +5,7 @@ from datetime import datetime
 class OrderDetail(BaseModel):
     product_id: Optional[int]
     quantity: Optional[int]
-    unit_price: Optional[float]
+    product_price: Optional[float]
 
 class CreateOrder(BaseModel):
     user_id: Optional[int]

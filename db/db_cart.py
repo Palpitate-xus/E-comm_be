@@ -31,6 +31,12 @@ def remove_from_cart(shoppingCart: ShoppingCart, token):
     execute_query(sql, (decode_token(token,"your_secret_key")['userid'], shoppingCart.product_id))
 
 def get_user_cart(token):
-    sql = "SELECT * FROM Shopping_cart WHERE user_id = %s"
-    result = execute_query(sql, (decode_token(token,"your_secret_key")['userid']))
+    user_id = decode_token(token, "your_secret_key")['userid']
+    sql = """
+        SELECT c.*, p.product_price
+        FROM Shopping_cart c
+        INNER JOIN Product p ON c.product_id = p.product_id
+        WHERE c.user_id = %s
+    """
+    result = execute_query(sql, (user_id,))
     return result

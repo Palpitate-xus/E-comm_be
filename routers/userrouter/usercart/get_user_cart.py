@@ -18,7 +18,8 @@ def get_user_cart(request: Request):
         list = {
             "product_id": item[1],
             "quantity": item[2],
-            "add_time": item[3]
+            "add_time": item[3],
+            "product_price": item[4]
         }
         data[order_id].append(list)
     # data[item[0]] = data

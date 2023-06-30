@@ -1,4 +1,5 @@
 from models.usermodel.user import User
+from models.usermodel.wishlist import Wishlist
 from db.database import execute_query,get_connection,close_connection
 from utils.auth import decode_token
 
@@ -29,11 +30,21 @@ def reset_password(user: User):
 def edit_user_info(user: User, token):
     sql = "UPDATE User SET email = %s, username = %s, password = %s WHERE user_id = %s"
     execute_query(sql, (user.email, user.username, user.password, decode_token(token,"your_secret_key")['userid']))
-
+#获取个人信息
 def get_profile(token):
     sql = "SELECT * FROM User WHERE user_id = %s"
     result = execute_query(sql, (decode_token(token, "your_secret_key")['userid']))
     return result
+#添加到愿望单
+def add_to_wishlist(wishlist: Wishlist, token):
+    sql = "SELECT * FROM Wishlist WHERE product_id = %s AND user_id = %s"
+    result = execute_query(sql, (wishlist.product_id, decode_token(token, "your_secret_key")['userid']))
+    if len(result) == 1:
+        return 0
+    else:
+        sql = "INSERT INTO Wishlist (product_id, user_id, add_time) VALUES (%s, %s, %s)"
+        execute_query(sql, (wishlist.product_id, decode_token(token, "your_secret_key")['userid'], wishlist.add_time))
+
 
 
 # 根据id删除用户

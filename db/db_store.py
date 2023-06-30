@@ -28,7 +28,7 @@ def reject_order(order: Orders):
     sql = "UPDATE Orders SET order_status = 'Rejected' WHERE order_id = %s AND order_status = 'Pending'"
     execute_query(sql, (order.order_id))
 
-def delete_product(product: Product):
-    # Delete the product with the given ID from the Product table
-    query = "DELETE FROM Product WHERE product_id = %s"
-    execute_query(query, (product.product_id,))
+def offshelf(product: Product):
+    # Update the product status to "offshelf" in the Product table
+    query = "UPDATE Product SET product_status = 'offshelf' WHERE product_id = %s"
+    execute_query(query, (product.product_id))

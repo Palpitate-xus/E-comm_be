@@ -28,6 +28,8 @@ app.include_router(update_profile_router)
 app.include_router(get_profile_router)
 #用户搜索商品路由
 app.include_router(serch_product_router)
+#用户添加愿望单路由
+app.include_router(add_to_wishlist_router)
 #用户购物车管理路由
 app.include_router(add_to_cart_router)
 app.include_router(remove_from_cart_router)
@@ -40,6 +42,7 @@ app.include_router(get_order_details_router)
 app.include_router(get_order_list_router)
 #商城订单和商品管理
 app.include_router(productlist_router)
+app.include_router(offshelf_router)
 app.include_router(orderlist_router)
 app.include_router(accept_order_platform_router)
 app.include_router(reject_order_platform_router)

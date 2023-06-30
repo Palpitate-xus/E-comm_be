@@ -5,6 +5,7 @@ from routers.userrouter.userinformation.update_profile import router as update_p
 from routers.userrouter.userinformation.get_profile import router as get_profile_router
 
 from .userrouter.serch_product import router as serch_product_router
+from .userrouter.add_to_wishlist import router as add_to_wishlist_router
 
 from routers.userrouter.usercart.remove_from_cart import router as remove_from_cart_router
 from routers.userrouter.usercart.add_to_cart import router as add_to_cart_router
@@ -17,6 +18,7 @@ from routers.userrouter.userorder.pay_order import router as pay_order_router
 from routers.userrouter.userorder.remove_order import router as remove_order_router
 
 from .storerouter.productlist import router as productlist_router
+from .storerouter.offshelf import router as offshelf_router
 from .storerouter.orderlist import router as orderlist_router
 from .storerouter.accept_order import router as accept_order_platform_router
 from .storerouter.reject_order import router as reject_order_platform_router

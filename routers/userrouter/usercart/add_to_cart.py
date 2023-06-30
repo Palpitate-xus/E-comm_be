@@ -6,9 +6,9 @@ router = APIRouter()
 
 
 @router.post("/api/cart/add_to_cart/")
-def add_to_cart(shoppingCart: ShoppingCart, request: Request):
+def add_to_cart(shoppingcart: ShoppingCart, request: Request):
     token = request.headers.get("Authorization")
     # 把商品加入购物车
-    db_cart.add_to_cart(shoppingCart,token)
+    db_cart.add_to_cart(shoppingcart,token)
 
     return {"code": 200, "message": "Add to cart successfully", "data": {}}

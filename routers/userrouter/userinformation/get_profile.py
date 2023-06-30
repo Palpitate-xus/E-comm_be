@@ -25,5 +25,5 @@ def get_profile(request: Request):
         )
 
         data.append(orders)
-    data = {"userprofile": data}
-    return {"code": 200, "message":   "Profile got successfully", "data": data}
+    # data = {"userprofile": data[0]}
+    return {"code": 200, "message":   "Profile got successfully", "data": data[0]}

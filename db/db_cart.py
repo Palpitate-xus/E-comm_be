@@ -33,9 +33,10 @@ def remove_from_cart(shoppingCart: ShoppingCart, token):
 def get_user_cart(token):
     user_id = decode_token(token, "your_secret_key")['userid']
     sql = """
-        SELECT c.*, p.product_price, p.product_name
+        SELECT c.*, p.product_price, p.product_name, i.stock_quantity
         FROM Shopping_cart c
         INNER JOIN Product p ON c.product_id = p.product_id
+        INNER JOIN Inventory i ON p.product_id = i.product_id
         WHERE c.user_id = %s
     """
     result = execute_query(sql, (user_id,))

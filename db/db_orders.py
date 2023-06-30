@@ -64,7 +64,7 @@ def create_order(createorder: CreateOrder, token):
     sql_clear_cart = "DELETE FROM Shopping_cart WHERE user_id = %s"
     execute_query(sql_clear_cart, (decode_token(token,"your_secret_key")['userid']))
 
-    return 1
+    return order_id
 
 
 def remove_order(order: Orders):
@@ -79,9 +79,15 @@ def pay_order(order: Orders):
 
 
 def get_order_detail(order: Orders):
-    sql = "SELECT * FROM Order_detail WHERE order_id = %s"
-    results = execute_query(sql, (order.order_id))
+    sql = """
+        SELECT od.*, p.product_name
+        FROM Order_detail od
+        INNER JOIN Product p ON od.product_id = p.product_id
+        WHERE od.order_id = %s
+    """
+    results = execute_query(sql, (order.order_id,))
     return results
+
 
 def get_order_list(token):
     sql = "SELECT * FROM Orders WHERE user_id = %s"

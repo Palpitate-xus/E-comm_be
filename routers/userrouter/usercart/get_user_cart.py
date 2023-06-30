@@ -12,9 +12,9 @@ def get_user_cart(request: Request):
     data = {}
 
     for item in result:
-        order_id = 'shoppingcart'
-        if order_id not in data:
-            data[order_id] = []
+        chart = 'shoppingcart'
+        if chart not in data:
+            data[chart] = []
         list = {
             "product_id": item[1],
             "quantity": item[2],
@@ -23,6 +23,6 @@ def get_user_cart(request: Request):
             "product_name": item[5],
             "stock_quantity": item[6]
         }
-        data[order_id].append(list)
+        data[chart].append(list)
     # data[item[0]] = data
     return {"code": 200, "message": "shoppingcart get successful", "data": data}

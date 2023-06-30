@@ -4,7 +4,7 @@ from db import db_user
 from fastapi import Request
 router = APIRouter()
 
-@router.post("/api/users/update_profile/")
+@router.post("/api/users/get_profile")
 def reset_password(user: User, request: Request):
     # 获取前端传递的token
     token = request.headers.get("token")

@@ -1,0 +1,105 @@
+CREATE TABLE `Product` (
+  `product_id` int NOT NULL,
+  `product_name` varchar(255) NOT NULL,
+  `product_description` varchar(255) NOT NULL,
+  `product_price` float NOT NULL,
+  `category_id` int NOT NULL,
+  `product_image` varchar(255) NOT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `User` (
+  `user_id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `registration_date` datetime DEFAULT NULL,
+  `last_login_date` datetime DEFAULT NULL,
+  `user_type` varchar(255) DEFAULT NULL,
+  `user_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT '1',
+  PRIMARY KEY (`user_id`) USING BTREE,
+  UNIQUE KEY `email` (`email`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Shopping_cart` (
+  `user_id` int NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int NOT NULL,
+  `add_time` datetime NOT NULL,
+  CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`),
+  CONSTRAINT `shopping_cart_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Product` (`product_id`),
+  UNIQUE KEY `unique_user_product` (`user_id`, `product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Orders` (
+  `order_id` varchar(255) NOT NULL,
+  `user_id` int NOT NULL,
+  `order_status` varchar(255) DEFAULT NULL,
+  `total_amount` float DEFAULT NULL,
+  `order_time` datetime DEFAULT NULL,
+  `payment_status` varchar(255) DEFAULT NULL,
+  `payment_method` varchar(255) DEFAULT NULL,
+  `shipping_address` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`order_id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `Order_detail` (
+  `order_detail_id` varchar(255) NOT NULL,
+  `order_id` varchar(255) NOT NULL,
+  `product_id` int NOT NULL,
+  `quantity` int DEFAULT NULL,
+  `unit_price` float DEFAULT NULL,
+  PRIMARY KEY (`order_detail_id`),
+  KEY `order_id` (`order_id`),
+  KEY `product_id` (`product_id`),
+  CONSTRAINT `order_detail_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `Orders` (`order_id`),
+  CONSTRAINT `order_detail_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `Product` (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE Supplier (
+supplier_id INT PRIMARY KEY,
+supplier_name VARCHAR(255) NOT NULL,
+supplier_address VARCHAR(255) NOT NULL
+);
+
+
+CREATE TABLE Supplier_product (
+supplier_id INT,
+product_id INT,
+PRIMARY KEY (supplier_id, product_id),
+FOREIGN KEY (supplier_id) REFERENCES Supplier (supplier_id),
+FOREIGN KEY (product_id) REFERENCES Product (product_id)
+);
+
+
+CREATE TABLE Supply_order (
+supplyorder_id VARCHAR(255) PRIMARY KEY,
+supplier_id INT,
+order_status VARCHAR(255) NOT NULL,
+order_time DATETIME NOT NULL,
+FOREIGN KEY (supplier_id) REFERENCES Supplier (supplier_id)
+);
+
+
+CREATE TABLE Supply_orderdetail (
+supplyorder_id VARCHAR(255),
+product_id INT,
+quantity INT,
+order_id VARCHAR(255),
+FOREIGN KEY (supplyorder_id) REFERENCES Supply_order (supplyorder_id),
+FOREIGN KEY (product_id) REFERENCES Product (product_id),
+FOREIGN KEY (order_id) REFERENCES User_order (order_id)
+);
+
+CREATE TABLE Inventory (
+supplier_id INT,
+product_id INT,
+inventory_time DATETIME NOT NULL,
+stock_quantity INT NOT NULL,
+PRIMARY KEY (supplier_id, product_id),
+FOREIGN KEY (supplier_id) REFERENCES Supplier (supplier_id),
+FOREIGN KEY (product_id) REFERENCES Product (product_id)
+);

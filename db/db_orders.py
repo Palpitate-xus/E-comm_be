@@ -78,14 +78,14 @@ def pay_order(order: Orders):
     execute_query(sql, (order.order_id, order.user_id))
 
 
-def get_order_detail(order: Orders):
+def get_order_detail(result):
     sql = """
         SELECT od.*, p.product_name
         FROM Order_detail od
         INNER JOIN Product p ON od.product_id = p.product_id
         WHERE od.order_id = %s
     """
-    results = execute_query(sql, (order.order_id,))
+    results = execute_query(sql, (result))
     return results
 
 

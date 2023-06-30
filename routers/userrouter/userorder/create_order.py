@@ -13,8 +13,8 @@ def create_order(createorder: CreateOrder, request: Request):
     result = db_orders.create_order(createorder, token)
     print(result)
     if result == 0:
-        order_details = db_orders.get_order_detail(result)
-        qr_coderesult = qr_code.generate_qr_code(order_details)
         return {"code": 403, "message": "Order create failed", "data": {}}
     else:
-        return {"code": 200, "message": "Order create successfully", "data": {}}
+        order_details = db_orders.get_order_detail(result)
+        qr_coderesult = qr_code.generate_qr_code(order_details)
+        return {"code": 200, "message": "Order create successfully", "data": {"qr_code": qr_coderesult}}

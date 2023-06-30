@@ -13,7 +13,7 @@ def find_history(orderdetail: OrderDetail):
 
     for item in result:
 
-        orderd = 'orderdeatils'
+        orderd = 'orderdetails'
         if orderd not in data:
             data[orderd] = []
         list = {

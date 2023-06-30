@@ -48,8 +48,6 @@ app.include_router(accept_order_supplier_router)
 app.include_router(inventory_management_router)
 
 
-
-
 if __name__ == "__main__":
     import uvicorn
 

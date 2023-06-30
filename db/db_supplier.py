@@ -2,12 +2,28 @@ from models.supplier import Supplier
 from models.product import Product
 from models.supply_order import Supply_order
 from .database import execute_query,get_connection,close_connection
-from datetime import datetime
-import uuid
+def accept_order(supply_order: Supply_order):
+    connection = get_connection()
+    try:
+        with connection.cursor() as cursor:
+            # 检查订单是否存在
+            sql = "SELECT * FROM supply_order WHERE supplyorder_id = %s"
+            cursor.execute(sql, supply_order.supplyorder_id)
+            result = cursor.fetchone()
 
-def accept_order(supply_order:Supply_order):
-    #将订单数据加入至数据库中
-    sql="INSERT INTO Supply_order(supplyorder_id, supplier_id,product_id,quantity,storage_time) VALUES (%s,%s,%s,%s,%s)"
-    storage_time=datetime.now()
-    supplyorder_id=str(uuid.uuid4())
-    result=execute_query(sql,(supplyorder_id,supply_order.supplier_id, supply_order.product_id, supply_order.stock_quantity, storage_time))
+            if result is None:
+                # 如果订单不存在，则将其插入表中并将 order_status 列设为 'accept'
+                sql = "INSERT INTO supply_order (supplyorder_id, supplier_id, order_status, order_time) " \
+                      "VALUES (%s, %s, 'pending', %s)"
+                cursor.execute(sql, (supply_order.supplyorder_id, supply_order.supplier_id, supply_order.order_time))
+                connection.commit()
+            else:
+                # 如果订单存在，则将其 order_status 列修改为 'accept'
+                sql = "UPDATE supply_order SET order_status = 'accept' WHERE supplyorder_id = %s"
+                cursor.execute(sql, supply_order.supplyorder_id)
+                connection.commit()
+
+        return {"message": "订单已接收"}
+
+    finally:
+        close_connection(connection)

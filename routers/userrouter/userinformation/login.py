@@ -15,4 +15,4 @@ async def login(user: User):
         # 生成JWT令牌
         token = generate_token(result[0][0])
         # 返回包含令牌的成功响应
-        return {"code": 200, "message": "Login successful", "data": {"token": token}}
+        return {"code": 200, "message": "Login successful", "data": {"Authorization": token}}

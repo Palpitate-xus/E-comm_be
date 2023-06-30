@@ -6,7 +6,7 @@ router = APIRouter()
 
 @router.post("/api/store/productlist/")
 def productlist():
-    # 在数据库中插入用户信息
+    # 获取商品列表
     result = db_store.productlist()
     data = []
 
@@ -18,7 +18,8 @@ def productlist():
             product_price=item[3],
             category_id=item[4],
             product_image=item[5],
-            stock_quantity=item[6]
+            stock_quantity=item[6],
+            product_status=item[7]
         )
         data.append(product1)
     data = {"products": data}

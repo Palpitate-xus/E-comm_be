@@ -3,10 +3,11 @@ from models.usermodel.orders import Orders
 from .database import execute_query
 
 def productlist():
-    # 查询所有商品
-    query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id"
+    # 查询所有状态为 "active" 的商品
+    query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE p.product_status = 'active'"
     result = execute_query(query)
     return result
+
 
 def orderlist():
     # 查询所有订单

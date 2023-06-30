@@ -9,6 +9,6 @@ class Product(BaseModel):
     category_id: Optional[int]
     stock_quantity: Optional[int]
     product_image: Optional[str]
-
+    product_status: Optional[str]
     class Config:
         extra = Extra.forbid

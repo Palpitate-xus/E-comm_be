@@ -5,8 +5,8 @@ from utils.auth import decode_token
 #登陆,返回user_id
 def login(user: User):
     # 查询数据库中是否存在匹配的用户名和密码
-    query = "SELECT user_id FROM User WHERE username=%s AND password=%s AND user_type=%s"
-    result = execute_query(query, (user.username, user.password, user.user_type))
+    query = "SELECT user_id FROM User WHERE email=%s AND password=%s AND user_type=%s"
+    result = execute_query(query, (user.email, user.password, user.user_type))
     if result:
         # 更新最后登陆时间
         update_query = "UPDATE User SET last_login_date=%s WHERE user_id=%s"
@@ -18,8 +18,9 @@ def create_user(user: User):
     execute_query(sql, (user.username, user.password, user.email, user.user_type, user.registration_date, user.user_status))
 #修改密码
 def reset_password(user: User):
-    sql = "SELECT COUNT(*) FROM User WHERE email = %s"
+    sql = "SELECT * FROM User WHERE email = %s"
     result = execute_query(sql, (user.email))
+    print(result)
     if len(result) == 0:
         return 0
     sql = "UPDATE User SET password = %s WHERE email = %s"

@@ -18,6 +18,10 @@ def create_user(user: User):
     execute_query(sql, (user.username, user.password, user.email, user.user_type, user.registration_date, user.user_status))
 #修改密码
 def reset_password(user: User):
+    sql = "SELECT COUNT(*) FROM User WHERE email = %s"
+    result = execute_query(sql, (user.email))
+    if len(result) == 0:
+        return 0
     sql = "UPDATE User SET password = %s WHERE email = %s"
     execute_query(sql, (user.password, user.email))
 #修改个人信息

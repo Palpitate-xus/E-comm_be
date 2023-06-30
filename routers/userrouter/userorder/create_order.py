@@ -7,7 +7,7 @@ router = APIRouter()
 
 @router.post("/api/orders/create_order")
 def create_order(createorder: CreateOrder, request: Request):
-    token = request.headers.get("token")
+    token = request.headers.get("Authorization")
     #创建订单
     result = db_orders.create_order(createorder, token)
     print(result)

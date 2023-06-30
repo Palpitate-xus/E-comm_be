@@ -9,7 +9,7 @@ router = APIRouter()
 @router.post("/api/orders/get_order_list")
 def get_order_list(request: Request):
     # 获取前端传递的token
-    token = request.headers.get("token")
+    token = request.headers.get("Authorization")
     result = db_orders.get_order_list(token)
     print(result)
     data = []

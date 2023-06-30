@@ -8,7 +8,7 @@ router = APIRouter()
 @router.post("/api/users/update_profile/")
 def reset_password(user: User, request: Request):
     # 获取前端传递的token
-    token = request.headers.get("token")
+    token = request.headers.get("Authorization")
     # 更新密码
     db_user.edit_user_info(user,token)
 

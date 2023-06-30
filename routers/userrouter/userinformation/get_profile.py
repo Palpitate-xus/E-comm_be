@@ -7,7 +7,7 @@ router = APIRouter()
 @router.post("/api/users/get_profile/")
 def get_profile(request: Request):
     # 获取前端传递的token
-    token = request.headers.get("token")
+    token = request.headers.get("Authorization")
     # 更新密码
     result = db_user.get_profile(token)
     data = []

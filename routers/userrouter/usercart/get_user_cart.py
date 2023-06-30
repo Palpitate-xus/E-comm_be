@@ -5,7 +5,7 @@ router = APIRouter()
 from fastapi import Request
 @router.post("/api/cart/get_user_cart/")
 def get_user_cart(request: Request):
-    token = request.headers.get("token")
+    token = request.headers.get("Authorization")
     # 在数据库中插入用户信息
     result = db_cart.get_user_cart(token)
     print(result)

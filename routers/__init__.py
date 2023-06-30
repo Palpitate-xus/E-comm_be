@@ -19,6 +19,7 @@ from routers.userrouter.userorder.remove_order import router as remove_order_rou
 
 from .storerouter.productlist import router as productlist_router
 from .storerouter.offshelf import router as offshelf_router
+from .storerouter.onshelf import router as onshelf_router
 from .storerouter.orderlist import router as orderlist_router
 from .storerouter.accept_order import router as accept_order_platform_router
 from .storerouter.reject_order import router as reject_order_platform_router
@@ -27,4 +28,5 @@ from .suppliersrouter.accept_order import router as accept_order_supplier_router
 from .suppliersrouter.inventory_management import router as inventory_management_router
 
 from routers.userrouter.rsa import router as rsa_router
+from routers.userrouter.userinfo import router as userinfo_router
 

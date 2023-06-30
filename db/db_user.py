@@ -26,6 +26,7 @@ def reset_password(user: User):
         return 0
     sql = "UPDATE User SET password = %s WHERE email = %s"
     execute_query(sql, (user.password, user.email))
+
 #修改个人信息
 def edit_user_info(user: User, token):
     sql = "UPDATE User SET email = %s, username = %s, password = %s WHERE user_id = %s"
@@ -44,8 +45,10 @@ def add_to_wishlist(wishlist: Wishlist, token):
     else:
         sql = "INSERT INTO Wishlist (product_id, user_id, add_time) VALUES (%s, %s, %s)"
         execute_query(sql, (wishlist.product_id, decode_token(token, "your_secret_key")['userid'], wishlist.add_time))
-
-
+def user_info(token):
+    sql = "SELECT * FROM User WHERE user_id = %s"
+    result = execute_query(sql, (decode_token(token, "your_secret_key")['userid']))
+    return result
 
 # 根据id删除用户
 def delete_user(user_id):

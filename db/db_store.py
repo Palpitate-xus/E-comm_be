@@ -33,3 +33,8 @@ def offshelf(product: Product):
     # Update the product status to "offshelf" in the Product table
     query = "UPDATE Product SET product_status = 'offshelf' WHERE product_id = %s"
     execute_query(query, (product.product_id))
+
+def onshelf(product: Product):
+    # Update the product status to "offshelf" in the Product table
+    query = "UPDATE Product SET product_status = 'active' WHERE product_id = %s"
+    execute_query(query, (product.product_id))

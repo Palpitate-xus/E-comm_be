@@ -8,7 +8,11 @@ def productlist():
     result = execute_query(query)
     return result
 
-
+def productlist1():
+    # 查询所有商品
+    query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id"
+    result = execute_query(query)
+    return result
 def orderlist():
     # 查询所有订单
     sql = "SELECT * FROM Orders"

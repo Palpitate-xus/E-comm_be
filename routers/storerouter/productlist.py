@@ -1,13 +1,24 @@
 from fastapi import APIRouter
 from db import db_store
+from db import db_user
+from models.usermodel.user import User
+from fastapi import Request
 from models.storemodel.product import Product
+from utils.auth import decode_token
 router = APIRouter()
 
 
 @router.post("/api/store/productlist/")
-def productlist():
+def productlist(request: Request):
+    token = request.headers.get("Authorization")
+    result1 = db_user.user_info(token)
+    for item in result1:
+        if item[6] == 'admin':
+            result = db_store.productlist1()
+        if item[6] == 'customer':
+            result = db_store.productlist()
+            print(result)
     # 获取商品列表
-    result = db_store.productlist()
     data = []
 
     for item in result:

@@ -7,6 +7,10 @@ def login(user: User):
     # 查询数据库中是否存在匹配的用户名和密码
     query = "SELECT user_id FROM User WHERE username=%s AND password=%s AND user_type=%s"
     result = execute_query(query, (user.username, user.password, user.user_type))
+    if result:
+        # 更新最后登陆时间
+        update_query = "UPDATE User SET last_login_date=%s WHERE user_id=%s"
+        execute_query(update_query, (user.last_login_date, result[0][0]))
     return result
 #创建新用户
 def create_user(user: User):
@@ -19,11 +23,12 @@ def reset_password(user: User):
 #修改个人信息
 def edit_user_info(user: User, token):
     sql = "UPDATE User SET email = %s, username = %s, password = %s WHERE user_id = %s"
-    print(token)
-    print(decode_token(token,"your_secret_key"))
     execute_query(sql, (user.email, user.username, user.password, decode_token(token,"your_secret_key")['userid']))
 
-
+def get_profile(token):
+    sql = "SELECT * FROM User WHERE user_id = %s"
+    result = execute_query(sql, (decode_token(token, "your_secret_key")['userid']))
+    return result
 
 
 # 根据id删除用户

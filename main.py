@@ -25,6 +25,7 @@ app.include_router(login_router)
 app.include_router(signup_router)
 app.include_router(reset_password_router)
 app.include_router(update_profile_router)
+app.include_router(get_profile_router)
 #用户搜索商品路由
 app.include_router(serch_product_router)
 #用户购物车管理路由

@@ -8,7 +8,6 @@ router = APIRouter()
 @router.post("/api/store/orderlist/")
 def get_order_list():
     result = db_store.orderlist()
-    print(result)
     data = []
 
     for item in result:

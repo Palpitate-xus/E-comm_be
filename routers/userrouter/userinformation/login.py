@@ -8,7 +8,6 @@ router = APIRouter()
 async def login(user: User):
 
     result = db_user.login(user)
-    print(result)
     if len(result) == 0:
         # 用户名或密码不匹配，返回错误响应
         return {"code": 403, "message": "Invalid username or password", "data":{}}

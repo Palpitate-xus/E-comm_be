@@ -2,6 +2,7 @@ from routers.userrouter.userinformation.reset_password import router as reset_pa
 from routers.userrouter.userinformation.login import router as login_router
 from routers.userrouter.userinformation.signup import router as signup_router
 from routers.userrouter.userinformation.update_profile import router as update_profile_router
+from routers.userrouter.userinformation.get_profile import router as get_profile_router
 
 from .userrouter.serch_product import router as serch_product_router
 

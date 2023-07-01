@@ -1,14 +1,15 @@
 from fastapi import APIRouter
 from models.storemodel.product import Product
-from db import db_store
-
+from db import db_wishlist
+from fastapi import Request
 router = APIRouter()
 
 
-@router.post("/api/products/search/")
-def searchproduct(product: Product):
-    # 在数据库中查询商品
-    result = db_store.searchproduct(product)
+@router.post("/api/users/wishlist/")
+def wishlist(request: Request):
+    token = request.headers.get("Authorization")
+    # 把商品加入购物车
+    result = db_wishlist.wishlist(token)
     data = []
 
     for item in result:
@@ -24,5 +25,4 @@ def searchproduct(product: Product):
         )
         data.append(product1)
     data = {"products": data}
-    return {"code": 200, "message": "Product searched successful", "data": data}
-
+    return {"code": 200, "message": "Wishlist got successfully", "data": data}

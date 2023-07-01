@@ -21,7 +21,7 @@ def orderlist():
 
 def searchproduct(product: Product):
     # Query the database to search for products with matching names
-    query = "SELECT * FROM Product WHERE product_name LIKE %s"
+    query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE product_name LIKE %s"
     result = execute_query(query,('%'+product.product_name+'%'))
     return result
 

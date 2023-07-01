@@ -7,7 +7,7 @@ import uuid
 from models.usermodel.create_order import CreateOrder
 from .database import execute_query
 from utils.auth import decode_token
-
+from datetime import datetime
 def create_order(createorder: CreateOrder, token):
     # 生成订单ID
     order_id = str(uuid.uuid4())
@@ -17,7 +17,7 @@ def create_order(createorder: CreateOrder, token):
 
     # 插入用户订单信息
     sql_insert_order = "INSERT INTO Orders (order_id, user_id, order_status, total_amount, order_time, payment_status, shipping_address) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-    execute_query(sql_insert_order, (order_id, decode_token(token,"your_secret_key")['userid'], createorder.order_status, total_amount, createorder.order_time,
+    execute_query(sql_insert_order, (order_id, decode_token(token,"your_secret_key")['userid'], createorder.order_status, total_amount, datetime.now(),
                                       createorder.payment_status, createorder.shipping_address))
 
     for order_detail in createorder.order_details:
@@ -46,7 +46,7 @@ def create_order(createorder: CreateOrder, token):
             supplier_order_ids[supplier_id] = supplier_order_id
 
             sql_insert_supplier_order = "INSERT INTO Supply_order (supplyorder_id, supplier_id, order_status, order_time) VALUES (%s, %s, %s, %s)"
-            execute_query(sql_insert_supplier_order, (supplier_order_id, supplier_id, createorder.order_status, createorder.order_time))
+            execute_query(sql_insert_supplier_order, (supplier_order_id, supplier_id, createorder.order_status, datetime.now()))
 
         supplier_order_id = supplier_order_ids[supplier_id]
 

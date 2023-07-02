@@ -1,4 +1,6 @@
 from models.usermodel.user import User
+from models.usermodel.address import Address
+from datetime import datetime
 from models.usermodel.wishlist import Wishlist
 from db.database import execute_query,get_connection,close_connection
 from utils.auth import decode_token
@@ -37,18 +39,13 @@ def get_profile(token):
     result = execute_query(sql, (decode_token(token, "your_secret_key")['userid']))
     return result
 #添加到愿望单
-def add_to_wishlist(wishlist: Wishlist, token):
-    sql = "SELECT * FROM Wishlist WHERE product_id = %s AND user_id = %s"
-    result = execute_query(sql, (wishlist.product_id, decode_token(token, "your_secret_key")['userid']))
-    if len(result) == 1:
-        return 0
-    else:
-        sql = "INSERT INTO Wishlist (product_id, user_id, add_time) VALUES (%s, %s, %s)"
-        execute_query(sql, (wishlist.product_id, decode_token(token, "your_secret_key")['userid'], wishlist.add_time))
+
+
 def user_info(token):
     sql = "SELECT * FROM User WHERE user_id = %s"
     result = execute_query(sql, (decode_token(token, "your_secret_key")['userid']))
     return result
+
 
 # 根据id删除用户
 def delete_user(user_id):

@@ -1,7 +1,7 @@
 from models.usermodel.shopping_cart import ShoppingCart
 from .database import execute_query
 from utils.auth import decode_token
-
+from datetime import datetime
 def add_to_cart(shoppingCart: ShoppingCart, token):
 
     sql_select = "SELECT quantity FROM Shopping_cart WHERE user_id = %s AND product_id = %s"
@@ -20,7 +20,7 @@ def add_to_cart(shoppingCart: ShoppingCart, token):
     elif shoppingCart.quantity > 0:
         # 插入新记录
         sql_insert = "INSERT INTO Shopping_cart (user_id, product_id, quantity, add_time) VALUES (%s, %s, %s, %s)"
-        execute_query(sql_insert, (decode_token(token,"your_secret_key")['userid'], shoppingCart.product_id, shoppingCart.quantity, shoppingCart.add_time))
+        execute_query(sql_insert, (decode_token(token,"your_secret_key")['userid'], shoppingCart.product_id, shoppingCart.quantity, datetime.now()))
 
 
 

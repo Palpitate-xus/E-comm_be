@@ -28,10 +28,16 @@ app.include_router(update_profile_router)
 app.include_router(get_profile_router)
 app.include_router(rsa_router)
 app.include_router(userinfo_router)
+#用户地址管理
+app.include_router(create_address_router)
+app.include_router(addresslist_router)
+app.include_router(delete_address_router)
 #用户搜索商品路由
 app.include_router(serch_product_router)
-#用户添加愿望单路由
+#用户愿望单路由
 app.include_router(add_to_wishlist_router)
+app.include_router(remove_from_wishlist_router)
+app.include_router(wishlist_router)
 #用户购物车管理路由
 app.include_router(add_to_cart_router)
 app.include_router(remove_from_cart_router)

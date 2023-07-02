@@ -1,6 +1,6 @@
 from models.suppliermodel.inventory import Inventory
 from .database import execute_query
-
+from datetime import datetime
 
 def inventory_management(inventory: Inventory):
     sql_select = "SELECT stock_quantity FROM inventory WHERE supplier_id = %s AND product_id = %s"
@@ -19,4 +19,4 @@ def inventory_management(inventory: Inventory):
     elif inventory.stock_quantity > 0:
         # 插入新记录
         sql_insert = "INSERT INTO inventory (supplier_id, product_id, inventory_time, stock_quantity) VALUES (%s, %s, %s, %s)"
-        execute_query(sql_insert, (inventory.supplier_id,inventory.product_id,inventory.inventory_time,inventory.stock_quantity))
+        execute_query(sql_insert, (inventory.supplier_id,inventory.product_id,datetime.now(),inventory.stock_quantity))

@@ -34,6 +34,9 @@ from .storerouter.onshelf import router as onshelf_router
 from .storerouter.orderlist import router as orderlist_router
 from .storerouter.accept_order import router as accept_order_platform_router
 from .storerouter.reject_order import router as reject_order_platform_router
+from .storerouter.delete_product import router as delete_product_router
+from .storerouter.edit_product import router as edit_product_router
+from .storerouter.insert_product import router as insert_product_router
 #供应商
 from .suppliersrouter.accept_order import router as accept_order_supplier_router
 from .suppliersrouter.inventory_management import router as inventory_management_router

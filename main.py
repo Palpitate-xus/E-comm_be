@@ -47,6 +47,7 @@ app.include_router(get_user_cart_router)
 app.include_router(create_order_router)
 app.include_router(remove_order_router)
 app.include_router(pay_order_router)
+app.include_router(qrcodepay_router)
 app.include_router(get_order_details_router)
 app.include_router(get_order_list_router)
 #商城订单和商品管理

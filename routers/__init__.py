@@ -25,6 +25,7 @@ from routers.userrouter.userorder.create_order import router as create_order_rou
 from routers.userrouter.userorder.get_order_details import router as get_order_details_router
 from routers.userrouter.userorder.get_order_list import router as get_order_list_router
 from routers.userrouter.userorder.pay_order import router as pay_order_router
+from routers.userrouter.userorder.qrcodepay import router as qrcodepay_router
 from routers.userrouter.userorder.remove_order import router as remove_order_router
 #商店
 from .storerouter.productlist import router as productlist_router

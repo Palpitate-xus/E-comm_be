@@ -18,5 +18,5 @@ def inventory_management(inventory: Inventory):
         execute_query(sql_update, (new_num, inventory.supplier_id, inventory.product_id))
     elif inventory.stock_quantity > 0:
         # 插入新记录
-        sql_insert = "INSERT INTO inventory (supplier_id, product_id, inventory_time, stock_quantity) VALUES (%s, %s, %s, %s)"
-        execute_query(sql_insert, (inventory.supplier_id,inventory.product_id,datetime.now(),inventory.stock_quantity))
+        sql_insert = "INSERT INTO inventory (supplier_id, inventory_time, stock_quantity) VALUES (%s, %s, %s)"
+        execute_query(sql_insert, (inventory.supplier_id, datetime.now(), inventory.stock_quantity))

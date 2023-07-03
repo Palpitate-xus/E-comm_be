@@ -22,7 +22,6 @@ def add_products_from_excel(file_path):
             products.append(product)
         print(products)
         # 将数据插入到数据库中
-        connection = get_connection()
         for product in products:
             sql = """
                 INSERT INTO product (product_name, product_description, product_price, category_id, product_image)
@@ -30,8 +29,6 @@ def add_products_from_excel(file_path):
             """
             execute_query(sql, (product.product_name, product.product_description, product.product_price, product.category_id,
                                       product.product_image))
-
-        close_connection(connection)
         return True
 
     except Exception as e:

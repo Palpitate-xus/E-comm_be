@@ -74,9 +74,9 @@ def remove_order(order: Orders):
     sql = "DELETE FROM Orders WHERE order_id = %s"
     execute_query(sql, (order.order_id))
 
-def pay_order(order: Orders):
+def pay_order(order: Orders, token):
     sql = "UPDATE Orders SET payment_status = 'Paid' WHERE order_id = %s AND user_id = %s"
-    execute_query(sql, (order.order_id, order.user_id))
+    execute_query(sql, (order.order_id, decode_token(token,"your_secret_key")['userid']))
 
 
 def get_order_detail(result):

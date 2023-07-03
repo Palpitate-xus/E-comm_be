@@ -1,6 +1,7 @@
 #用户个人信息
 from routers.userrouter.userinformation.reset_password import router as reset_password_router
 from routers.userrouter.userinformation.login import router as login_router
+from routers.userrouter.userinformation.logout import router as logout_router
 from routers.userrouter.userinformation.signup import router as signup_router
 from routers.userrouter.userinformation.update_profile import router as update_profile_router
 from routers.userrouter.userinformation.get_profile import router as get_profile_router

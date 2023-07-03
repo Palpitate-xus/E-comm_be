@@ -22,6 +22,7 @@ app.add_middleware(
 )
 #用户信息管理路由
 app.include_router(login_router)
+app.include_router(logout_router)
 app.include_router(signup_router)
 app.include_router(reset_password_router)
 app.include_router(update_profile_router)

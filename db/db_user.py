@@ -1,4 +1,5 @@
 from models.usermodel.user import User
+from models.suppliermodel.suser import SUser
 from models.usermodel.address import Address
 from datetime import datetime
 from models.usermodel.wishlist import Wishlist
@@ -13,12 +14,22 @@ def login(user: User):
     if result:
         # 更新最后登陆时间
         update_query = "UPDATE User SET last_login_date=%s WHERE user_id=%s"
-        execute_query(update_query, (user.last_login_date, result[0][0]))
+        execute_query(update_query, (datetime.now(), result[0][0]))
     return result
 #创建新用户
-def create_user(user: User):
+def create_user(suser: SUser):
     sql = "INSERT INTO User (username, password, email, user_type, registration_date, user_status) VALUES (%s, %s, %s, %s, %s, %s)"
-    execute_query(sql, (user.username, user.password, user.email, user.user_type, user.registration_date, user.user_status))
+    execute_query(sql, (suser.username, suser.password, suser.email, suser.user_type, datetime.now(), suser.user_status))
+
+def create_user1(suser: SUser):
+    sql = "INSERT INTO User (username, password, email, user_type, registration_date, user_status) VALUES (%s, %s, %s, %s, %s, %s)"
+    execute_query(sql, (suser.username, suser.password, suser.email, suser.user_type, datetime.now(), suser.user_status))
+    query = "SELECT user_id FROM User WHERE email=%s AND password=%s AND user_type=%s"
+    result = execute_query(query, (suser.email, suser.password, suser.user_type))
+    sql = "INSERT INTO Supplier (supplier_name, supplier_address, user_id) VALUES (%s, %s, %s)"
+    execute_query(sql, (suser.supplier_name, suser.supplier_address, result))
+
+
 #修改密码
 def reset_password(user: User):
     sql = "SELECT * FROM User WHERE email = %s"

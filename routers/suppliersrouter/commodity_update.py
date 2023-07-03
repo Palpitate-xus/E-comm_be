@@ -8,6 +8,7 @@ router=APIRouter()
 def upload_products_from_excel(file: UploadFile = File(...)):
     try:
         file_path = f"uploaded_files/{file.filename}"
+        print(file_path)
         #print(file_path)
         # with open(file_path, "r") as f:
         #     contents =file.read()

@@ -74,16 +74,16 @@ def remove_order(order: Orders):
     sql = "DELETE FROM Orders WHERE order_id = %s"
     execute_query(sql, (order.order_id))
 
-def pay_order(order: Orders, token):
-    sql = "UPDATE Orders SET payment_status = 'Paid' WHERE order_id = %s AND user_id = %s"
-    execute_query(sql, (order.order_id, decode_token(token,"your_secret_key")['userid']))
+def pay_order(order_id):
+    sql = "UPDATE Orders SET payment_status = 'Paid' WHERE order_id = %s"
+    execute_query(sql, (order_id))
     sql = """
             UPDATE Supply_order
             INNER JOIN Supply_orderdetail ON Supply_order.supplyorder_id = Supply_orderdetail.supplyorder_id
             SET Supply_order.order_status = 'Has paid'
             WHERE Supply_orderdetail.order_id = %s
         """
-    execute_query(sql, (order.order_id))
+    execute_query(sql, (order_id))
 
 
 def get_order_detail(result):

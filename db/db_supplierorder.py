@@ -48,5 +48,25 @@ def accept_order(supply_order: Supply_order):
              return 0
      sql = "UPDATE Orders SET order_status = 'has shipped' WHERE order_id = %s"
      execute_query(sql, (result0[0][0]))
+     # import smtplib
+     # from email.mime.text import MIMEText
+     # from email.mime.multipart import MIMEMultipart
+     #
+     # # 邮件内容
+     # message = MIMEMultipart()
+     # message["From"] = "3043863274@qq.com"
+     # message["To"] = "3043863274@qq.com"
+     # message["Subject"] = "邮件主题"
+     #
+     # # 正文内容
+     # body = "这是邮件的正文内容。"
+     # message.attach(MIMEText(body, "plain"))
+     #
+     # # 发送邮件
+     # with smtplib.SMTP("smtp.qq.com", 25) as server:
+     #     server.starttls()  # 使用TLS加密连接
+     #     server.login("3043863274@qq.com", "password")  # 发件人邮箱账号和密码
+     #     server.send_message(message)
+
 
 

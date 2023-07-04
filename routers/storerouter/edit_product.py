@@ -7,7 +7,5 @@ router=APIRouter()
 @router.post("/api/store/edit_product")
 def edit_product(product:Product):
     #在商品表中修改数据
-    connection = get_connection()
-    result=db_product.edit_product(product)
-    close_connection(connection)
+    db_product.edit_product(product)
     return {"code": 200, "message": "Product edit successful", "data": {}}

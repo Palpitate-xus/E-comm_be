@@ -1,11 +1,12 @@
 
-
-from models.usermodel.user import User
+import pandas as pd
+from mlxtend.preprocessing import TransactionEncoder
+from mlxtend.frequent_patterns import apriori,association_rules
 from models.usermodel.orders import Orders
 from models.usermodel.order_details import OrderDetail
 import uuid
 from models.usermodel.create_order import CreateOrder
-from .database import execute_query
+from .database import execute_query,get_connection
 from utils.auth import decode_token
 from datetime import datetime
 def create_order(createorder: CreateOrder, token):
@@ -111,3 +112,52 @@ def get_order_list(token):
     sql = "SELECT * FROM Orders WHERE user_id = %s"
     results = execute_query(sql, (decode_token(token,"your_secret_key")['userid']))
     return results
+
+
+
+def get_recomm(token):
+    query = """SELECT Order_detail.order_id, Order_detail.product_id
+    FROM Order_detail
+    """
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(query)
+    rows = cursor.fetchall()
+    columns = [column[0] for column in cursor.description]
+    # Create a DataFrame from the rows and column names
+    df = pd.DataFrame(rows, columns=columns)
+
+    transactions = df.groupby('order_id')['product_id'].apply(list).values.tolist()
+    te = TransactionEncoder()
+    te_ary = te.fit(transactions).transform(transactions)
+    df_encoded = pd.DataFrame(te_ary, columns=te.columns_)
+    frequent_itemsets = apriori(df_encoded, min_support=0.2, use_colnames=True)
+    rules = association_rules(frequent_itemsets)
+    filtered_rules = rules[(rules['confidence'] > 0.5) & (rules['lift'] > 1)]
+    sql = """
+    SELECT Order_detail.product_id
+            FROM Order_detail
+            INNER JOIN Orders ON Orders.order_id = Order_detail.order_id
+            WHERE Orders.user_id = %s
+    """
+    his = []
+    result = execute_query(sql, (decode_token(token,"your_secret_key")['userid']))
+    for i in result:
+        his.append(i[0])
+    user_purchases = his
+    # 创建一个空的推荐列表
+    recommendations = []
+    for _, row in filtered_rules.iterrows():
+        antecedents = row['antecedents']
+        consequents = row['consequents']
+        # 检查antecedents是否为购买记录的子集
+        if set(antecedents).issubset(set(user_purchases)):
+            # 将consequents添加到推荐列表中
+            recommendations.extend(consequents)
+    # 去除重复的推荐商品
+    recommendations = list(set(recommendations))
+    # 打印推荐的商品列表
+    print(recommendations)
+    query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE p.product_status = 'active' and p.product_id IN ({})".format(",".join(map(str, recommendations)))
+    result = execute_query(query)
+    return result

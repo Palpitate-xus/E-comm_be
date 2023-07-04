@@ -8,6 +8,7 @@ from routers.userrouter.userinformation.get_profile import router as get_profile
 from routers.userrouter.userinformation.userinfo import router as userinfo_router
 #用户其他功能
 from .userrouter.serch_product import router as serch_product_router
+from .userrouter.get_recomm import router as get_recomm_router
 #用户愿望单
 from routers.userrouter.userwishlist.add_to_wishlist import router as add_to_wishlist_router
 from routers.userrouter.userwishlist.remove_from_wishlist import router as remove_from_wishlist_router

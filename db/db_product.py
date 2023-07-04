@@ -18,13 +18,13 @@ def edit_product(product:Product):
                         SET product_name = %s,
                             product_description = %s,
                             product_price = %s,
-                            category_id = %s,
+                            category = %s,
                             product_image = %s,
                             product_status = %s
                         WHERE product_id = %s
                     """
         execute_query(sql,(product.product_name,product.product_description,
-                           product.product_price,product.category_id,
+                           product.product_price,product.category,
                            product.product_image,product.product_status,product.product_id))
     finally:
         close_connection(connection)
@@ -39,7 +39,7 @@ def insert_product(product:Product):
                         (%s, %s, %s, %s, %s, %s, %s)
                     """
         execute_query(sql,(product.product_id,product.product_name,product.product_description,
-                           product.product_price,product.category_id,product.product_image,
+                           product.product_price,product.category,product.product_image,
                            product.product_status))
 
     finally:

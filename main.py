@@ -35,6 +35,8 @@ app.include_router(addresslist_router)
 app.include_router(delete_address_router)
 #用户搜索商品路由
 app.include_router(serch_product_router)
+#用户推荐
+app.include_router(get_recomm_router)
 #用户愿望单路由
 app.include_router(add_to_wishlist_router)
 app.include_router(remove_from_wishlist_router)
@@ -66,7 +68,6 @@ app.include_router(get_supplierorder_router)
 #供应商库存管理
 app.include_router(inventory_management_router)
 app.include_router(upload_products_from_excel)
-
 
 if __name__ == "__main__":
     import uvicorn

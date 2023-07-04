@@ -32,7 +32,7 @@ def productlist(request: Request):
             product_name=item[1],
             product_description=item[2],
             product_price=item[3],
-            category_id=item[4],
+            category=item[4],
             product_image=item[5],
             product_status=item[6],
             stock_quantity=item[7]

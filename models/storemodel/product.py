@@ -6,7 +6,7 @@ class Product(BaseModel):
     product_name: Optional[str]
     product_description: Optional[str]
     product_price: Optional[float]
-    category_id: Optional[int]
+    category: Optional[str]
     stock_quantity: Optional[int]
     product_image: Optional[str]
     product_status: Optional[str]

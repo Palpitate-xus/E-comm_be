@@ -16,8 +16,8 @@ def add_products_from_excel(file_path, token):
                 product_name=row['商品名称'],
                 product_description=row['商品描述'],
                 product_price=row['商品价格'],
-                category_id=row['商品分类'],
-                stock_quantity=row['商品库存数量'],
+                category=row['商品分类'],
+                stock_quantity=row['库存数量'],
                 product_image=row['商品图片']
             )
             products.append(product)
@@ -29,16 +29,16 @@ def add_products_from_excel(file_path, token):
         cur = connection.cursor()
         for product in products:
             sql = """
-                INSERT INTO product (product_name, product_description, product_price, category_id, product_image, product_status)
+                INSERT INTO product (product_name, product_description, product_price, category, product_image, product_status)
                 VALUES (%s, %s, %s, %s, %s, %s)
             """
-            cur.execute(sql,(product.product_name, product.product_description, product.product_price, product.category_id, product.product_image, 'active'))
+            cur.execute(sql,(product.product_name, product.product_description, product.product_price, product.category, product.product_image, 'active'))
             lid = cur.lastrowid
             sql_insert = "INSERT INTO inventory (supplier_id, product_id, inventory_time, stock_quantity) VALUES (%s, %s, %s, %s)"
             execute_query(sql_insert,
                           (result[0][0], lid, datetime.now(), product.stock_quantity))
         return True
-        connection = close_connection()
+        close_connection(connection)
     except Exception as e:
         print(f"Error adding products from Excel: {e}")
         return False

@@ -34,4 +34,4 @@ def insert_product(product:Product):
         """
     execute_query(sql,(product.product_id,product.product_name,product.product_description,
                            product.product_price,product.category,product.product_image,
-                           product.product_status))
+                           'active'))

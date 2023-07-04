@@ -3,9 +3,11 @@ import base64
 import io
 def generate_qr_code(order_details):
     # Convert order details to a string representation
+    order_info = str(order_details)
+
     # Generate QR code image
     qr = qrcode.QRCode()
-    qr.add_data("http://mall.iyigui.cn:8000/api/payments/qrcode_pay/?=" + order_details.order_id)
+    qr.add_data(order_info)
     qr.make()
     qr_code_image = qr.make_image(fill_color="black", back_color="white")
 

@@ -69,10 +69,14 @@ def create_order(createorder: CreateOrder, token):
     return order_id
 
 
-def remove_order(order: Orders):
-    sql = "DELETE FROM Order_detail WHERE order_id = %s"
-    execute_query(sql, (order.order_id))
-    sql = "DELETE FROM Orders WHERE order_id = %s"
+def retuen_order(order: Orders):
+    sql = "SELECT * FROM Order_detail WHERE order_id = %s"
+    result = execute_query(sql, (order.order_id))
+    print(result)
+    # sql = "DELETE FROM Order_detail WHERE order_id = %s"
+    # result = execute_query(sql, (order.order_id))
+    # print(result)
+    sql = "UPDATE Orders SET order_status = 'Canceled' WHERE order_id = %s AND order_status ='has shipped'"
     execute_query(sql, (order.order_id))
 
 def pay_order(order_id):
@@ -87,15 +91,6 @@ def pay_order(order_id):
     execute_query(sql, (order_id))
 
 
-def get_order_detail(result):
-    sql = """
-        SELECT od.*, p.product_name
-        FROM Order_detail od
-        INNER JOIN Product p ON od.product_id = p.product_id
-        WHERE od.order_id = %s
-    """
-    results = execute_query(sql, (result))
-    return results
 
 def get_order_detail1(orderdetail:OrderDetail):
     sql = """
@@ -112,7 +107,9 @@ def get_order_list(token):
     sql = "SELECT * FROM Orders WHERE user_id = %s"
     results = execute_query(sql, (decode_token(token,"your_secret_key")['userid']))
     return results
-
+def accept_order(order: Orders):
+    sql = "UPDATE Orders SET order_status = 'Accepted' WHERE order_id = %s"
+    execute_query(sql, (order.order_id))
 
 
 def get_recomm(token):

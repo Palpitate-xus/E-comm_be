@@ -2,6 +2,8 @@ from models.usermodel.user import User
 from models.usermodel.orders import Orders
 from models.usermodel.order_details import OrderDetail
 from models.suppliermodel.supply_order import Supply_order
+from models.suppliermodel.supplier_orderdetails import Supply_orderdetails
+
 import uuid
 from models.usermodel.create_order import CreateOrder
 from .database import execute_query
@@ -18,14 +20,14 @@ def get_order_list(token):
     results = execute_query(sql, (decode_token(token,"your_secret_key")['userid']))
     return results
 
-def get_order_detail1(orderdetail:OrderDetail):
+def get_order_detail1(supply_orderdetails:Supply_orderdetails):
     sql = """
-        SELECT od.*, p.product_name
-        FROM Order_detail od
-        INNER JOIN Product p ON od.product_id = p.product_id
-        WHERE od.order_id = %s
+        SELECT so.*, p.product_name
+        FROM Supply_orderdetail so
+        INNER JOIN Product p ON so.product_id = p.product_id
+        WHERE so.supplyorder_id = %s
     """
-    results = execute_query(sql, (orderdetail.order_id))
+    results = execute_query(sql, (supply_orderdetails.supplyorder_id))
     return results
 
 def accept_order(supply_order: Supply_order):

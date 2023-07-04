@@ -32,13 +32,6 @@ def searchproduct(product: Product):
     result = execute_query(query,('%'+product.product_name+'%'))
     return result
 
-def accept_order(order: Orders):
-    sql = "UPDATE Orders SET order_status = 'Accepted' WHERE order_id = %s AND order_status = 'Pending'"
-    execute_query(sql, (order.order_id))
-
-def reject_order(order: Orders):
-    sql = "UPDATE Orders SET order_status = 'Rejected' WHERE order_id = %s AND order_status = 'Pending'"
-    execute_query(sql, (order.order_id))
 
 def offshelf(product: Product):
     # Update the product status to "offshelf" in the Product table

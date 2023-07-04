@@ -27,14 +27,13 @@ from routers.userrouter.userorder.get_order_details import router as get_order_d
 from routers.userrouter.userorder.get_order_list import router as get_order_list_router
 from routers.userrouter.userorder.pay_order import router as pay_order_router
 from routers.userrouter.userorder.qrcodepay import router as qrcodepay_router
-from routers.userrouter.userorder.remove_order import router as remove_order_router
+from routers.userrouter.userorder.accept_order import router as accept_order_router
+from routers.userrouter.userorder.return_order import router as return_order_router
 #商店
 from .storerouter.productlist import router as productlist_router
 from .storerouter.offshelf import router as offshelf_router
 from .storerouter.onshelf import router as onshelf_router
 from .storerouter.orderlist import router as orderlist_router
-from .storerouter.accept_order import router as accept_order_platform_router
-from .storerouter.reject_order import router as reject_order_platform_router
 from .storerouter.delete_product import router as delete_product_router
 from .storerouter.edit_product import router as edit_product_router
 from .storerouter.insert_product import router as insert_product_router
@@ -43,6 +42,7 @@ from .suppliersrouter.accept_order import router as accept_order_supplier_router
 from .suppliersrouter.inventory_management import router as inventory_management_router
 from .suppliersrouter.commodity_update import router as upload_products_from_excel
 from .suppliersrouter.orderlist import router as get_supplierorder_router
+from .suppliersrouter.orderdetails import router as get_supplierorderdetails_router
 from routers.userrouter.rsa import router as rsa_router
 
 

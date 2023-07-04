@@ -1,13 +1,13 @@
 from fastapi import APIRouter
-from models.usermodel.order_details import OrderDetail
-from db import db_orders
+from models.suppliermodel.supplier_orderdetails import Supply_orderdetails
+from db import db_supplierorder
 
 router = APIRouter()
 
 
 @router.post("/api/suppplier/get_order_details")
-def find_history(orderdetail: OrderDetail):
-    result = db_orders.get_order_detail1(orderdetail)
+def find_history(supply_orderdetails: Supply_orderdetails):
+    result = db_supplierorder.get_order_detail1(supply_orderdetails)
     print(result)
     data = {}
 

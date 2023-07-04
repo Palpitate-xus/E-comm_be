@@ -19,6 +19,7 @@ def productlist(request: Request):
             if item[6] == 'customer':
                 result = db_store.productlist()
             if item[6] == 'supplier':
+                print(item[0])
                 result = db_store.productlist2(item[0])
                 print(result)
     except:

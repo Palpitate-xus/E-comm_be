@@ -15,9 +15,10 @@ def productlist1():
     return result
 
 def productlist2(x):
-    # 查询所有商品
+    query = "SELECT supplier_id FROM Supplier WHERE user_id = %s"
+    result = execute_query(query, x)
     query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE i.supplier_id = %s "
-    result = execute_query(query,x)
+    result = execute_query(query,result[0][0])
     return result
 
 def orderlist():

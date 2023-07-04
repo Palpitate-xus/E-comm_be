@@ -37,6 +37,7 @@ from .storerouter.orderlist import router as orderlist_router
 from .storerouter.delete_product import router as delete_product_router
 from .storerouter.edit_product import router as edit_product_router
 from .storerouter.insert_product import router as insert_product_router
+from .storerouter.statistics import router as statistics_router
 #供应商
 from .suppliersrouter.accept_order import router as accept_order_supplier_router
 from .suppliersrouter.inventory_management import router as inventory_management_router

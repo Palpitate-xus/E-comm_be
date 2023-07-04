@@ -61,6 +61,7 @@ app.include_router(orderlist_router)
 app.include_router(delete_product_router)
 app.include_router(edit_product_router)
 app.include_router(insert_product_router)
+app.include_router(statistics_router)
 #供应商管理
 app.include_router(accept_order_supplier_router)
 app.include_router(get_supplierorder_router)

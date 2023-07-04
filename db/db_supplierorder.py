@@ -49,3 +49,4 @@ def accept_order(supply_order: Supply_order):
      sql = "UPDATE Orders SET order_status = 'has shipped' WHERE order_id = %s"
      execute_query(sql, (result0[0][0]))
 
+

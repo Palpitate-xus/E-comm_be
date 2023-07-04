@@ -158,3 +158,23 @@ def get_recomm(token):
     query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE p.product_status = 'active' and p.product_id IN ({})".format(",".join(map(str, recommendations)))
     result = execute_query(query)
     return result
+
+
+def statistics():
+    sql = """
+    SELECT
+        DATE(order_time) AS order_date,
+        COUNT(DISTINCT order_id) AS order_count,
+        SUM(total_amount) AS total_sales
+    FROM
+        `Orders`
+    WHERE
+        order_status = 'Accepted'
+        AND payment_status = 'Paid'
+    GROUP BY
+        DATE(order_time)
+    ORDER BY
+        DATE(order_time) ASC;
+    """
+    result = execute_query(sql)
+    return result

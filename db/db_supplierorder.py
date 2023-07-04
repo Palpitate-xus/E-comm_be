@@ -22,7 +22,7 @@ def get_order_list(token):
 
 def get_order_detail1(supply_orderdetails:Supply_orderdetails):
     sql = """
-        SELECT so.*, p.product_name
+        SELECT so.*, p.product_name, p.product_price
         FROM Supply_orderdetail so
         INNER JOIN Product p ON so.product_id = p.product_id
         WHERE so.supplyorder_id = %s
@@ -48,25 +48,28 @@ def accept_order(supply_order: Supply_order):
              return 0
      sql = "UPDATE Orders SET order_status = 'has shipped' WHERE order_id = %s"
      execute_query(sql, (result0[0][0]))
-     # import smtplib
-     # from email.mime.text import MIMEText
-     # from email.mime.multipart import MIMEMultipart
-     #
-     # # 邮件内容
-     # message = MIMEMultipart()
-     # message["From"] = "3043863274@qq.com"
-     # message["To"] = "3043863274@qq.com"
-     # message["Subject"] = "邮件主题"
-     #
-     # # 正文内容
-     # body = "这是邮件的正文内容。"
-     # message.attach(MIMEText(body, "plain"))
-     #
-     # # 发送邮件
-     # with smtplib.SMTP("smtp.qq.com", 25) as server:
-     #     server.starttls()  # 使用TLS加密连接
-     #     server.login("3043863274@qq.com", "password")  # 发件人邮箱账号和密码
-     #     server.send_message(message)
+     import smtplib
+     from email.mime.text import MIMEText
+     from email.mime.multipart import MIMEMultipart
+     sql = "SELECT user_id FROM Orders WHERE order_id = %s"
+     user_id = execute_query(sql, (result0[0][0]))
+     sql = "SELECT email FROM User WHERE user_id = %s"
+     email = execute_query(sql, (user_id[0][0]))
+     # 邮件内容
+     message = MIMEMultipart()
+     message["From"] = "3043863274@qq.com"
+     message["To"] = email[0][0]
+     message["Subject"] = '订单号'+ result0[0][0]
+
+     # 正文内容
+     body = "您的商品已全部发货。"
+     message.attach(MIMEText(body, "plain"))
+
+     # 发送邮件
+     with smtplib.SMTP("smtp.qq.com", 25) as server:
+         server.starttls()  # 使用TLS加密连接
+         server.login("xxx", "xxx")  # 发件人邮箱账号和密码
+         server.send_message(message)
 
 
 

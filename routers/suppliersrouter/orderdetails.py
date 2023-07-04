@@ -20,8 +20,8 @@ def find_history(supply_orderdetails: Supply_orderdetails):
             "order_id": item[0],
             "product_id": item[1],
             "quantity": item[2],
-            "product_price": item[3],
-            "product_name": item[4]
+            "product_name": item[4],
+            "product_price": item[5],
         }
         data[orderd].append(list)
 

@@ -11,4 +11,4 @@ def accept_order(supply_order: Supply_order):
     #print(result[0])
 
     # 根据supplier对象的属性执行相应的操作
-    return {"message": "Order accepted by supplier"}
+    return {"code": 200, "message": "Order accepted by supplier", "data": {}}

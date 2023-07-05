@@ -15,5 +15,5 @@ def create_order(createorder: CreateOrder, request: Request):
     if result == 0:
         return {"code": 403, "message": "Order create failed", "data": {}}
     else:
-        qr_coderesult = qr_code.generate_qr_code("http://mall.iyigui.cn:8000/api/payments/qrcode_pay/"  + result[0][0])
+        qr_coderesult = qr_code.generate_qr_code("http://mall.iyigui.cn:8000/api/payments/qrcode_pay/"  + result)
         return {"code": 200, "message": "Order create successfully", "data": {"qr_code": qr_coderesult}}

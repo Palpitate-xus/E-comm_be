@@ -155,6 +155,10 @@ def get_recomm(token):
     recommendations = list(set(recommendations))
     # 打印推荐的商品列表
     print(recommendations)
+    if not recommendations:
+        query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE p.product_status = 'active'"
+        result = execute_query(query)
+        return result
     query = "SELECT p.*, i.stock_quantity FROM Product p INNER JOIN Inventory i ON p.product_id = i.product_id WHERE p.product_status = 'active' and p.product_id IN ({})".format(",".join(map(str, recommendations)))
     result = execute_query(query)
     return result

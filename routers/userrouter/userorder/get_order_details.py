@@ -17,11 +17,11 @@ def find_history(orderdetail: OrderDetail):
         if orderd not in data:
             data[orderd] = []
         list = {
-            "order_id": item[0],
-            "product_id": item[1],
-            "quantity": item[2],
-            "product_price": item[3],
-            "product_name": item[4]
+            "order_id": item[1],
+            "product_id": item[2],
+            "quantity": item[3],
+            "product_price": item[4],
+            "product_name": item[5]
         }
         data[orderd].append(list)
 

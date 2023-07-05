@@ -11,4 +11,5 @@ def inventory_management(inventory: Inventory):
     db_inventory.inventory_management(inventory)
     # 插入完成后，记得关闭连接
     close_connection(connection)
-    return {"message": "Inventory changed successfully"}
+
+    return {"code": 200, "message": "Inventory changed successfully"}

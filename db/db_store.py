@@ -43,3 +43,9 @@ def onshelf(product: Product):
     # Update the product status to "offshelf" in the Product table
     query = "UPDATE Product SET product_status = 'active' WHERE product_id = %s"
     execute_query(query, (product.product_id))
+
+def banner():
+    # 查询所有订单
+    sql = "SELECT * FROM banner"
+    results = execute_query(sql)
+    return results

@@ -26,5 +26,7 @@ def get_recomm(request: Request):
             stock_quantity=item[7]
         )
         data.append(product1)
+    import random
+    data = random.sample(data, 4)
     data = {"products": data}
     return {"code": 200, "message": "Recommandlist get successful", "data": data}
